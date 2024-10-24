@@ -69,6 +69,20 @@
     </style>
 </head>
 <body>
+
+    <form id="myForm" onsubmit="return validateForm()">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username">
+  
+  <br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+
+  <br><br>
+  
+  <button type="submit">Submit</button>
+</form>
     <div class="container">
         <h2>Simple Form</h2>
         <form method="post" action="https://pearson.tfaforms.net/api_v2/rest/workflow/processor" class="hintsSide labelsAbove" id="3195" role="form">
