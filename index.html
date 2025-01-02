@@ -20,8 +20,50 @@
 
     </style>
 </head>
-<body>
+ <body>
+    This is blob website
+    <a id="divele">This is a link</a>
 
-  Website...
-</body>
+    <div id="myDiv">This is div</div>
+
+    <script>
+      const a = document.querySelector("#divele");
+      const data = "Some data to display";
+
+      const blob = new Blob([data], { type: "text/plain" });
+
+      const url = URL.createObjectURL(blob);
+
+      a.href = url;
+
+      // CSS string
+      const cssData = `
+  #myDiv {
+    color: blue;
+    font-size: 22px;
+    background-color: lightpink;
+    border: 2px solid black;
+    text-align: center;
+  }
+`;
+
+      // Create Blob and generate URL
+      const cssBlob = new Blob([cssData], { type: "text/css" });
+      const cssUrl = URL.createObjectURL(cssBlob);
+
+      // Assign the Blob URL as a custom data attribute
+      const div = document.querySelector("#myDiv");
+      div.setAttribute("data-style-url", cssUrl);
+
+      // Dynamically apply the CSS
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = cssUrl;
+      document.head.appendChild(link);
+
+      // Add content to the div
+      div.innerHTML = "This div uses a Blob URL for its styles!";
+    </script>
+  </body>
 </html>
+
